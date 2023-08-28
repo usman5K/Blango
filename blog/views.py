@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from blog.models import Post
+from blog.models import Posts
 
 
 def post_to_dict(post):
@@ -25,13 +25,13 @@ def post_to_dict(post):
 @csrf_exempt
 def post_list(request):
     if request.method == "GET":
-        posts = Post.objects.all()
+        posts = Posts.objects.all()
         posts_as_dict = [post_to_dict(p) for p in posts]
         return JsonResponse({"data": posts_as_dict})
 
     elif request.method == "POST":
         post_data = json.loads(request.body)
-        post = Post.objects.create(**post_data)
+        post = Posts.objects.create(**post_data)
         return HttpResponse(
             status=HTTPStatus.CREATED,
             headers={"Location": reverse("api_post_detail",
@@ -43,7 +43,7 @@ def post_list(request):
 
 @csrf_exempt
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Posts, pk=pk)
     if request.method == "GET":
         return JsonResponse(post_to_dict(post))
     elif request.method == "PUT":
