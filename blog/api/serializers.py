@@ -6,5 +6,5 @@ class PostSerializer(serializers.ModelSerializer):
   class Meta:
     model = Posts
     fields = "__all__"
-    readonly = ["modified_at", "created_at"]
+    readonly = ["modified_at", "created_at", "deleted_at"]
 
