@@ -5,7 +5,7 @@ class Author(models.Model):
     name = models.CharField(max_length=128, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    deleted_at = models.DateTimeField(blank=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -20,7 +20,7 @@ class Posts(models.Model):
     published_at = models.DateTimeField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    deleted_at = models.DateTimeField(blank=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
     
     author = models.ForeignKey("blog.Author", null=True, verbose_name=("Post_Author"), on_delete=models.SET_NULL)
     

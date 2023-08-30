@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dpu3+dc(4!d#3mtv_^ezc$el$goq#b5x=96pjo(ypv*q%$*))$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dilemmavoltage-melodypowder-8000.codio.io']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
