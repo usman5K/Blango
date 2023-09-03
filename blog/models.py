@@ -27,14 +27,25 @@ class Posts(models.Model):
     summary = models.CharField(max_length=255, blank=True)
     content = models.CharField(max_length=1024, blank=False)
     slug = models.SlugField(unique=True)
+    tags = models.ForeignKey(Tags, on_delete=models.CASCADE, null=True, blank=True)
     published = models.BooleanField(default=False)
     published_at = models.DateTimeField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    
     author = models.ForeignKey("blog.Author", null=True, verbose_name=("Post_Author"), on_delete=models.SET_NULL)
     
     def __str__(self):
         return self.title
-    
+
+
+class Comment(models.Model):
+    body = models.TextField(max_length=512)
+    creator = models.ForeignKey(Author, on_delete=models.DO_NOTHING, related_name="Creator_Comments")
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name="Post_Comments")
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.body
