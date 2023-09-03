@@ -11,6 +11,17 @@ class Author(models.Model):
         return self.name
     
 
+class Tags(models.Model):
+    name = models.CharField(max_length=128, null=False, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    value = models.TextField(max_length=100, unique=True)
+    
+    def __str__(self):
+        return self.name
+
+
 class Posts(models.Model):
     title = models.CharField(max_length=255, blank=False)
     summary = models.CharField(max_length=255, blank=True)
