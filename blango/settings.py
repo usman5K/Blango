@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dpu3+dc(4!d#3mtv_^ezc$el$goq#b5x=96pjo(ypv*q%$*))$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['morphdriver-fordvertigo-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
+ALLOWED_HOSTS = ['machinefriend-phoenixshoe-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
 
 
 # Application definition
@@ -48,6 +48,10 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+    ],
+
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ]
 }
 
