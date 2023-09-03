@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dpu3+dc(4!d#3mtv_^ezc$el$goq#b5x=96pjo(ypv*q%$*))$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dilemmavoltage-melodypowder-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
+ALLOWED_HOSTS = ['morphdriver-fordvertigo-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
 
 
 # Application definition
@@ -39,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

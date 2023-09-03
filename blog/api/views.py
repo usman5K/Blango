@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.permissions import *
 
 from blog.api.serializers import PostSerializer
 from blog.models import Posts
@@ -7,6 +8,7 @@ from blog.models import Posts
 class PostList(generics.ListCreateAPIView):
     queryset = Posts.objects.all()
     serializer_class = PostSerializer
+
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
