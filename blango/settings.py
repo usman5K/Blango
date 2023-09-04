@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dpu3+dc(4!d#3mtv_^ezc$el$goq#b5x=96pjo(ypv*q%$*))$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['austriavalue-beastgregory-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
+ALLOWED_HOSTS = ['memphispoint-bruceromeo-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg',
 ]
 
 
@@ -56,6 +57,14 @@ REST_FRAMEWORK = {
 }
 
 
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+        "Basic": {"type": "basic"},
+    }
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -68,10 +77,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blango.urls'
 
+import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR,os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

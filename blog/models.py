@@ -34,6 +34,7 @@ class Posts(models.Model):
     modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     deleted_at = models.DateTimeField(null=True, blank=True)
     author = models.ForeignKey("blog.Author", null=True, verbose_name=("Post_Author"), on_delete=models.SET_NULL)
+    comments = models.ForeignKey("blog.Comment", null=True, verbose_name=("Post_Comments"), on_delete=models.SET_NULL)
     
     def __str__(self):
         return self.title
@@ -42,7 +43,6 @@ class Posts(models.Model):
 class Comment(models.Model):
     body = models.TextField(max_length=512)
     creator = models.ForeignKey(Author, on_delete=models.DO_NOTHING, related_name="Creator_Comments")
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name="Post_Comments")
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     deleted_at = models.DateTimeField(null=True, blank=True)
