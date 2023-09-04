@@ -48,4 +48,10 @@ class PostDetailSerializer(PostSerializer):
             comment.save()
 
         return instance
-    
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tags
+        fields = "__all__"
+        

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dpu3+dc(4!d#3mtv_^ezc$el$goq#b5x=96pjo(ypv*q%$*))$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['memphispoint-bruceromeo-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
+ALLOWED_HOSTS = ['unitplace-harrismedusa-8000.codio.io', 'campusarthur-holidaycharlie-8000.codio.io']
 
 
 # Application definition

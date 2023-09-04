@@ -27,7 +27,7 @@ class Posts(models.Model):
     summary = models.CharField(max_length=255, blank=True)
     content = models.CharField(max_length=1024, blank=False)
     slug = models.SlugField(unique=True)
-    tags = models.ForeignKey(Tags, on_delete=models.CASCADE, null=True, blank=True)
+    tags = models.ForeignKey(Tags, on_delete=models.CASCADE, null=True, blank=True, related_name="post_tags")
     published = models.BooleanField(default=False)
     published_at = models.DateTimeField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
